@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer base {
+    html {
+        @apply bg-slate-50;
+    }
+
+    html.dark {
+        color-scheme: dark;
+        @apply bg-slate-950;
+    }
+
+    body {
+        @apply bg-slate-50 text-slate-900 antialiased;
+    }
+
+    html.dark body {
+        @apply bg-slate-950 text-slate-100;
+    }
+
+    html.dark :where(input, select, textarea):not([type='checkbox']):not([type='radio']):not([type='file']) {
+        @apply border-slate-600 bg-slate-800 text-slate-100;
+    }
+
+    html.dark :where(input, select, textarea)::placeholder {
+        @apply text-slate-500;
+    }
+}
+
+@layer components {
+    .app-card {
+        @apply border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900;
+    }
+
+    .app-field {
+        @apply rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100;
+    }
+
+    html.dark .rounded-2xl.border.bg-white.shadow-sm,
+    html.dark .rounded-xl.border.border-slate-200.bg-white,
+    html.dark .rounded-xl.bg-white.shadow-sm,
+    html.dark .rounded-xl.border.bg-white,
+    html.dark .border.bg-white {
+        @apply border-slate-700 bg-slate-900;
+    }
+
+    html.dark .border-slate-200,
+    html.dark .border-slate-300 {
+        @apply border-slate-600;
+    }
+
+    html.dark .bg-slate-100 {
+        @apply bg-slate-800;
+    }
+
+    html.dark .bg-slate-50 {
+        @apply bg-slate-900/50;
+    }
+
+    html.dark .bg-white:not(.dark\:bg-slate-800) {
+        @apply bg-slate-900;
+    }
+
+    html.dark .bg-white\/95 {
+        @apply bg-slate-900/95;
+    }
+
+    html.dark .bg-teal-50 {
+        @apply bg-teal-950/40;
+    }
+
+    html.dark .bg-teal-100 {
+        @apply bg-teal-950/50 text-teal-200;
+    }
+
+    html.dark .text-slate-900 {
+        @apply text-slate-100;
+    }
+
+    html.dark .text-slate-800 {
+        @apply text-slate-100;
+    }
+
+    html.dark .text-slate-700 {
+        @apply text-slate-200;
+    }
+
+    html.dark .text-slate-600 {
+        @apply text-slate-300;
+    }
+
+    html.dark .text-slate-500 {
+        @apply text-slate-400;
+    }
+
+    html.dark .text-slate-400 {
+        @apply text-slate-500;
+    }
+
+    html.dark .text-teal-800,
+    html.dark .text-teal-700 {
+        @apply text-teal-400;
+    }
+
+    html.dark .text-rose-600 {
+        @apply text-rose-400;
+    }
+
+    html.dark .text-emerald-600 {
+        @apply text-emerald-400;
+    }
+
+    html.dark .text-orange-600 {
+        @apply text-orange-400;
+    }
+
+    html.dark .ring-slate-100 {
+        @apply ring-slate-700;
+    }
+
+    html.dark .shadow-sm {
+        --tw-shadow-color: rgb(0 0 0 / 0.35);
+    }
+
+    html.dark a:where(.text-teal-600, .text-teal-700) {
+        @apply text-teal-400;
+    }
+
+    html.dark button:where(.text-slate-700, .border-slate-300) {
+        @apply border-slate-600 text-slate-200;
+    }
+}
+
+.app-toast-enter-active,
+.app-toast-leave-active {
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.app-toast-enter-from,
+.app-toast-leave-to {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+}
+
+@keyframes app-toast-check-pop {
+    0% {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.12);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.app-toast-check {
+    animation: app-toast-check-pop 0.45s ease-out;
+}
+
+.app-toast-banner--celebrate {
+    animation: app-toast-check-pop 0.35s ease-out;
+}
